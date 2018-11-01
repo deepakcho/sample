@@ -57,3 +57,24 @@ function SeriesSum(n)
 	}
 	return j.toFixed(2);
 }
+
+
+function towerBuilder(nFloors) {
+   var tower=[];
+  
+  var totalStars=nFloors+nFloors-1;
+  var spaces=~~(totalStars/2);
+  var addCharactor =(n,char)=>{
+    let str='';
+    for(let j=0;j<n;j++) {
+      str=str+char;
+    }
+    return str;
+  };
+  for(let i=0;i<nFloors;i++) {
+     tower.push(addCharactor((spaces-1),' ')+addCharactor((totalStars-(spaces*2))+1,'*')+addCharactor((spaces-1),' '));
+spaces--;
+  }
+  return tower
+  
+}
