@@ -78,3 +78,41 @@ spaces--;
   return tower
   
 }
+
+function solution(number){
+var sum=0;
+for(let i=0;i<number;i++)
+  sum=((i%3)==0 || (i%5)==0) ? sum+i:sum;
+  return sum;
+}
+
+function decrypt(encryptedText, n) {
+let output = encryptedText;
+  for(i=0;i<n;i++){
+    let textArr= output.split('');
+    let first= textArr.slice(0,~~(textArr.length/2));
+    let last = textArr.slice(~~(textArr.length/2));
+    let str ='';
+	let flag=true;
+    for(let i=0,j=1;i<textArr.length;i++,j++) {
+		 if(last.length >i){
+			str = str + textArr[first.length+i] +  textArr[i];
+			if(str.length > textArr.length && textArr.length%2!==0){
+				let arr = str.split('');
+				arr.length = arr.length-1;
+				str = arr.join('');
+			}
+		 } else {
+			break;
+			}
+    }
+    console.log(str);
+    output = str;
+  }
+return output;
+}
+
+function encrypt(text, n) {
+  let textArr= text.split('');
+  return result = textArr.filter((d,i)=> {if(i%2!==0) return d}).join('') + textArr.filter((d,i)=> {if(i%2==0) return d}).join('');
+}
